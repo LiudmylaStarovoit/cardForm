@@ -1,0 +1,39 @@
+@media (max-width: 992px) {
+    .main {
+        flex-direction: column;
+        .left-section, .right-section {
+            width: 100%;
+        }
+        .left-section {
+            height: 250px;
+            &_wrapper {
+                height: 282px;
+                right: unset;
+                top: unset;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -70px;
+                flex-direction: column-reverse;
+                gap: 0;
+            }
+            .front-card {
+                margin-top: -78px;
+                margin-left: -65px;
+            }
+            .back-card {
+                margin-right: -65px;
+            }
+        }
+        .right-section {
+            height: 70%;
+            align-items: start;
+            padding-top: 120px;
+            form {
+                width: 400px;
+            }
+           
+        }
+    }   
+}
+
+
