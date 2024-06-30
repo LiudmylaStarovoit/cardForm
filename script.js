@@ -132,3 +132,62 @@ for (let i = 0; i < inputs.length; i++) {
         }
     });
 }
+
+
+const selectLanguage = document.querySelector('.right-section-select'),
+    selectCurrentLanguage = document.querySelector('.right-section-select-flags'),
+    optionLanguage = document.querySelector('.right-section-select-option'),
+    selectCaret = document.querySelector('.select-caret');
+
+    localStorage.setItem("defaultCurrentLanguage", selectCurrentLanguage.src);
+
+
+    if (localStorage.getItem("currentLanguage") === optionLanguage.src) {
+        selectCurrentLanguage.src = localStorage.getItem("currentLanguage");
+        optionLanguage.src = localStorage.getItem("defaultCurrentLanguage", selectCurrentLanguage.src);
+    }
+
+let isSelectOpen = false;
+
+selectLanguage.addEventListener('click', () => {
+    if (!isSelectOpen) {
+        optionLanguage.style.top = '0';
+    }else {
+        optionLanguage.style.top = "-20px";
+    }
+    selectCaret.style.rotate = isSelectOpen ? '0deg' : '180deg';
+    isSelectOpen = !isSelectOpen;
+});
+
+optionLanguage.addEventListener("click", () => {
+    const currentFlagSrc = selectCurrentLanguage.src;
+    selectCurrentLanguage.src = optionLanguage.src;
+    optionLanguage.src = currentFlagSrc;
+    localStorage.setItem("currentLanguage", selectCurrentLanguage.src);
+    loadLanguageData();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    loadLanguageData();
+});
+
+function loadLanguageData() {
+    fetch('./data.json')
+        .then(response => response.json())
+        .then(data => {
+            let {pl, en} = data;
+            const loadLanguage = document.querySelectorAll(".load-language");
+
+            let objKeys = Object.keys(en);
+            let objKeysPl = Object.keys(pl);
+
+            loadLanguage.forEach((item, i) => {
+                if (selectCurrentLanguage.src.includes('UK')) {
+                    item.innerText = en[objKeys[i]];
+                } else {
+                    item.innerText = pl[objKeysPl[i]];
+                }
+            });
+        })
+        .catch(error => console.error('Error loading language data:', error));
+}

@@ -1,0 +1,20 @@
+{
+    "en": {
+        "cardholderNameLabel": "CARDHOLDER NAME",
+        "cardNumberLabel": "CARD NUMBER",
+        "cardExpDateLabel": "EXP. DATE (MM/YY)",
+        "formButton": "Confirm",
+        "complitedStateTitle": "Thank You",
+        "complitedStateSubtitle": "We've added your card details",
+        "complitedStateButton": "Continue"
+    },
+    "pl": {
+        "cardholderNameLabel": "IMIĘ I NAZWISKO POSIADACZA KARTY",
+        "cardNumberLabel": "NUMER KARTY",
+        "cardExpDateLabel": "EXP. DATA (MM/RRRR)",
+        "formButton": "Zatwierdź",
+        "complitedStateTitle": "Dziękuję",
+        "complitedStateSubtitle": "Gotowe! Dodaliśmy dane Twojej karty",
+        "complitedStateButton": "Kontynuj"
+    }
+}
