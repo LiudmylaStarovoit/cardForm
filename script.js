@@ -120,13 +120,24 @@ for (let i = 0; i < inputs.length; i++) {
             inputs[i].classList.add('error-input');
             errors[i].classList.add('error-show');
             handleChangeErrorText("Can't be blank", i);
-            
-        } else {
-            errors[i].classList.remove('error-show');
+        } else if (inputs[i].value && !errors[i].textContent.includes('Wrong format') && !errors[i].textContent.includes('Must be lower then 12')) {
             inputs[i].classList.remove('error-input');
-            const form = document.querySelector('form'),
-                complitedState = document.querySelector('.complited-state');
+            errors[i].classList.remove('error-show');
+        }
 
+        const notEmpty = Array.from(inputs).every((item) => {
+            return item.value;
+        });
+
+        const notErrors = Array.from(errors).every((item) => {
+            return !item.classList.contains('error-show');
+        });
+        console.log( notErrors);
+        
+        if (notEmpty && notErrors) {
+            const form = document.querySelector('form'),
+                  complitedState = document.querySelector('.complited-state');
+    
             form.classList.add('d-none');
             complitedState.classList.remove('d-none');
         }
